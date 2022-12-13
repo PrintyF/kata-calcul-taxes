@@ -1,14 +1,9 @@
 <div mat-dialog-content>
-  <table mat-table [dataSource]="panier">
+  <table mat-table [dataSource]="goodsAfterTaxes">
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nom </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef> Prix TTC</th>
-      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
     </ng-container>
 
     <ng-container matColumnDef="number">
@@ -16,9 +11,16 @@
       <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Prix TTC</th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} € </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <hr>
+  Total TTC : {{total}} €
 </div>
 <mat-dialog-actions align="end">
   <button mat-flat-button mat-dialog-close="true">Fermer</button>

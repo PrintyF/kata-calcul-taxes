@@ -12,6 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { DetailsComponent } from './components/panier/details/details.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -34,7 +35,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatTabsModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ]
 })
 export class PanierModule { }

@@ -15,7 +15,8 @@ export class PanierComponent {
   displayedColumns: string[] = [
     "name",
     "price",
-    "number"
+    "number",
+    "import"
   ];
 
   constructor(public dialog: MatDialog) {

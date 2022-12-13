@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Good } from '../../../models/good';
-import { GoodAfterTaxes } from '../../../models/goodAfterTaxes';
+import { TaxesService } from '../../../service/taxes.service';
 
 @Component({
   selector: 'app-details',
@@ -11,22 +11,23 @@ import { GoodAfterTaxes } from '../../../models/goodAfterTaxes';
 export class DetailsComponent implements OnInit {
   displayedColumns: string[] = [
     "name",
+    "number",
     "price",
-    "number"
   ];
 
-  goodsAfterTaxes: GoodAfterTaxes[] = [];
-
-  constructor(@Inject(MAT_DIALOG_DATA) public panier: Good[]) {}
+  goodsAfterTaxes: Good[] = [];
+  total:number = 0
+  constructor(@Inject(MAT_DIALOG_DATA) public panier: Good[],
+              private taxesService: TaxesService) {}
 
   ngOnInit() {
-    this.panier.forEach(good => {
-      this.goodsAfterTaxes.push({
-        name: good.name,
-        priceTTC: good.price,
-        quantity: good.quantity
-      })
-    })
+   this.panier.forEach( (good) => {
+     let goodAfterTaxes: Good = {...good};
+
+     goodAfterTaxes.price = this.taxesService.getTTCGoodPrice(good);
+     this.total += goodAfterTaxes.price;
+     this.goodsAfterTaxes.push(goodAfterTaxes)
+   });
   }
 
 }
