@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Goods } from '../../models/goods';
+import { Good } from '../../models/good';
+import { DetailsComponent } from './details/details.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-panier',
@@ -7,6 +9,22 @@ import { Goods } from '../../models/goods';
   styleUrls: ['./panier.component.scss']
 })
 export class PanierComponent {
-  @Input('panier') panier: Goods[] = [];
+  @Input('panier') panier: Good[] = [];
   @Input('index') index: number = 0;
+
+  displayedColumns: string[] = [
+    "name",
+    "price",
+    "number"
+  ];
+
+  constructor(public dialog: MatDialog) {
+  }
+
+  showDetails(): void {
+    this.dialog.open(DetailsComponent, {
+      width: '600px',
+      data: this.panier
+    });
+  }
 }

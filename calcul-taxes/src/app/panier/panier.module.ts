@@ -8,13 +8,18 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+import { DetailsComponent } from './components/panier/details/details.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
 @NgModule({
   declarations: [
     OverviewComponent,
-    PanierComponent
+    PanierComponent,
+    DetailsComponent
   ],
   exports: [
     OverviewComponent
@@ -26,7 +31,10 @@ import { MatInputModule } from '@angular/material/input';
     MatGridListModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule,
+    MatTableModule,
+    MatDialogModule
   ]
 })
 export class PanierModule { }

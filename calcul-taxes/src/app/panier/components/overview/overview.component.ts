@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Goods } from '../../models/goods';
+import { Good } from '../../models/good';
 
 @Component({
   selector: 'app-overview',
@@ -8,58 +8,60 @@ import { Goods } from '../../models/goods';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
- inputs: Goods[][] = [];
-  inputsOne: Goods[] = [
+ inputs: Good[][] = [];
+  inputsOne: Good[] = [
     {
       name: 'livres',
       price: 12.49,
-      number: 2
+      quantity: 2
     },
     {
       name: 'CD musical',
       price: 14.99,
-      number: 1
+      quantity: 1
     },
     {
       name: 'barres de chocolat',
       price: 0.85,
-      number: 3
+      quantity: 3
     }
   ];
-  inputsTwo: Goods[] = [
+  inputsTwo: Good[] = [
     {
       name: 'boîtes de chocolats importée',
       price: 10,
-      number: 2
+      quantity: 2
     },
     {
       name: 'flacons de parfum importé',
       price: 47.50,
-      number: 3
+      quantity: 3
     }
   ]
-  inputsThree: Goods[] = [
+  inputsThree: Good[] = [
     {
       name: 'flacons de parfum importé',
       price: 27.99,
-      number: 2
+      quantity: 2
     },
     {
       name: 'flacon de parfum',
       price: 18.99,
-      number: 1
+      quantity: 1
     },
     {
       name: 'boîtes de pilules contre la migraine',
       price: 9.75,
-      number: 3
+      quantity: 3
     },
     {
       name: 'boîtes de chocolats importés',
       price: 11.25,
-      number: 2
+      quantity: 2
     }
-  ]
+  ];
+
+
 
  constructor() {
  }
