@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Panier {{index + 1}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <div *ngFor="let good of panier">
+        <form class="form">
+          <mat-form-field>
+            <mat-label>Nom</mat-label>
+            <input matInput disabled [value]="good.name">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Prix</mat-label>
+            <input matInput disabled [value]="good.price.toString()">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Quantité</mat-label>
+            <input matInput disabled [value]="good.number.toString()">
+          </mat-form-field>
+        </form>
+      </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button>Details</button>
+  </mat-card-actions>
+</mat-card>
