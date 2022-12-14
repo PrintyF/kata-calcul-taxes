@@ -110,7 +110,7 @@ describe('TaxesService', () => {
         good.imported = true;
         good.type = GoodEnum.OTHER;
         good.price = 13.5;
-        expect(service.getTTCGoodPrice(good)).toEqual(17.05)
+        expect(service.getTTCGoodPrice(good)).toEqual(16.9)
       });
       it('with a price of 27.99 and a quantity of 2', function () {
         good.imported = true;
