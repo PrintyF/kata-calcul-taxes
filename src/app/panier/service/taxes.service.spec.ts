@@ -16,17 +16,21 @@ describe('TaxesService', () => {
   });
 
   describe('getTTCGoodPrice', ()=> {
-    let good: Good = {
-      imported: false,
-      name: '',
-      price: 0,
-      quantity: 1,
-      type: GoodEnum.ESSENTIAL
-    };
+    let good: Good;
+
+    beforeEach( () => {
+      good = {
+        imported: false,
+        name: '',
+        price: 0,
+        quantity: 1,
+        type: GoodEnum.ESSENTIAL
+      };
+    })
 
 
     describe('no taxes', () => {
-      it('with a price of 10', function () {        good.type = GoodEnum.BOOK;
+      it('with a price of 10', function () {
         good.type = GoodEnum.ESSENTIAL;
         good.imported = false;
         good.price = 10;
@@ -92,13 +96,13 @@ describe('TaxesService', () => {
         good.imported = true;
         good.type = GoodEnum.OTHER;
         good.price = 100;
-        expect(service.getTTCGoodPrice(good)).toEqual(126)
+        expect(service.getTTCGoodPrice(good)).toEqual(125)
       });
       it('with a price of 200', function () {
         good.imported = true;
         good.type = GoodEnum.OTHER;
         good.price = 200;
-        expect(service.getTTCGoodPrice(good)).toEqual(252)
+        expect(service.getTTCGoodPrice(good)).toEqual(250)
       });
     });
     describe('with need of rounded', () => {
@@ -108,6 +112,14 @@ describe('TaxesService', () => {
         good.price = 13.5;
         expect(service.getTTCGoodPrice(good)).toEqual(17.05)
       });
+      it('with a price of 27.99 and a quantity of 2', function () {
+        good.imported = true;
+        good.quantity = 2;
+        good.type = GoodEnum.OTHER;
+        good.price = 27.99;
+        expect(service.getTTCGoodPrice(good)).toEqual(70)
+      });
     });
   });
 });
+

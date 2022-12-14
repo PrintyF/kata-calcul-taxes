@@ -13,15 +13,15 @@ export class TaxesService {
   }
 
   getTTCGoodPrice(good: Good): number {
-    let priceTTC = good.price * good.quantity;
-    if (good.type === GoodEnum.BOOK) {
-      priceTTC = priceTTC + priceTTC * 10 / 100;
-    }
-    else if (good.type === GoodEnum.OTHER) {
-      priceTTC = priceTTC + priceTTC * 20 / 100;
-    }
+    let priceTTC = good.price;
+    let taxes = 0;
+
+    if (good.type === GoodEnum.BOOK)
+      taxes += this.roundUpFiveCent(priceTTC * 0.1) * good.quantity;
+    else if (good.type === GoodEnum.OTHER)
+      taxes += this.roundUpFiveCent(priceTTC * 0.2) * good.quantity;
     if (good.imported)
-      priceTTC = priceTTC + priceTTC * 5 / 100;
-    return this.roundUpFiveCent(priceTTC);
+      taxes += this.roundUpFiveCent((priceTTC * 0.05) * good.quantity);
+    return this.roundUpFiveCent(priceTTC * good.quantity + taxes);
   }
 }
